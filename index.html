@@ -3,80 +3,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" 
           content="width=device-width, initial-scale=1.0">
-    <title>Jogo de Adivinhação - Ifg 2 Áudio e Vídeo</title>
+    
+    <title>Jogo de Adivinhação - IFG 2º Áudio e Vídeo</title>
     <style>
-        .corpo_da_pagina {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            margin: 0;
-        }
-        button{
-          padding: 10px 20px;
-          border: none;
-          font-size:16px;
-          cursor:pointer;
-          background-color:#FFCC00;
-          border-radius:10px;
-        }
-        .container {
-          text-align: center;
-          background-color:#ffffff;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, alpha);
 
-        }
-        h1{
-          color:rgb(50, 46, 99)
-        }
-        input[type="number"]{
-          padding: 10px;
-          font-size:16px;
-          width: 100px;
-          margin-bottom: 10px;
-        }
+      .corpoDaPagina {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #f4f4f4;
+          margin: 0;
+      }
+
+      .container{
+        text-align: center;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(145, 31, 0, 0.4);
+      }
+
+      h1{
+        color: #333
+      }
+
+      input[type="number"]{
+        padding: 10px;
+        font-size: 16px;
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        color: #ffffff;
+        background-color: #28a745;
+      }
+      
+      .message{
+        margin-top: 20px;
+        font-size: 18px;
+      }
     </style>
   </head>
 
- <body class="corpo_da_pagina">
+  <body class="corpoDaPagina" >
+     
+    <div class="container">
+      <h1>Jogo de Adivinhação</h1>
+      <p>Tente adivinhar o número secreto entre 1 e 100</p>
 
- <div class="container">
-    <h1>Jogo de Adivinhação</h1>
-    <p>Tente adivinhar o número secreto enre 1 e 100</p>
+      <input type="number" id="NMPalpite" min="1" max="100"/>
 
-    <input type="number" id="NMPalpite" min="1" max="100"/>
-    <button id="BTNAdivinhar" 
-      onmouseover="escurecerBotao()"
-      onmouseout="cororiginal()"
-      onclick= "verificarPalpite()">
-      Adivnhar
-    </button>
+      <button id="BTNAdivinhar" 
+              onmouseover="escurecerBotao()"
+              onmouseout="voltarCorOriginalBotao()"
+              onclick="verificarPalpite()"> 
+              Adivinhar 
+      </button>
+      <div class="message" id="DIVmensagem"></div>
 
- </div>
+    </div>
+    <script>
+      function voltarCorOriginalBotao(){
+        var botao_adivinhar = document.getElementById('BTNAdivinhar');
+        botao_adivinhar.style.backgroundColor = '#28a745';
+      }
 
-<script>
-    function cororiginal(){
-      var botao_adivinhar = document.getElementById('BTNAdivinhar');
-     botao_adivinhar.style.backgroundColor = '#FFCC00';
-    }
-    function escurecerBotao(){
-     var botao_adivinhar = document.getElementById('BTNAdivinhar');
-     botao_adivinhar.style.backgroundColor = '#FFEC99';
-    }
-
-    function verificarPalpite(){
-     var caixa_texto = document.getElementById('NMPalpite');
-     caixa_texto.value;
-    }
-
-  </script> 
- 
-
-</body>
+      function escurecerBotao(){
+        var botao_adivinhar = document.getElementById('BTNAdivinhar');
+        botao_adivinhar.style.backgroundColor = '#F5DD27';
+      }
 
 
+      let  numeroSecreto = Math.floor( Math.random() * 100 ) + 1;
+
+      function verificarPalpite(){
+         var caixa_texto = document.getElementById('NMPalpite');
+         var div_mensagem = document.getElementById('DIVmensagem')
+         var chuteDoJogador = parseInt(caixa_texto.value);
+         
+         if(chuteDoJogador == numeroSecreto){
+           div_mensagem.textContent = ("Você acertou!");
+         }else{
+           div_mensagem.textContent = ("Você errou!");
+         }
+          alert(numeroSecreto);
+      }
+
+    </script>
+    
+  </body>
 </html>
