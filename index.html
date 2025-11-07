@@ -74,8 +74,10 @@
     </div>
     <script>
       function desabilitarJogo(){
+        var caixa_texto = document.getElementById('NMPalpite')
         var botao_adivinhar = document.getElementById('BTNAdivinhar');
         botao_adivinhar.disabled = true;
+        caixa_texto.disabled = true;
         botao_adivinhar.style.backgroundColor = '#DCDCDC'
       }
 
@@ -96,10 +98,8 @@
       let qtdTentativas = 5;
 
       function verificarPalpite(){
-        if (botao_adivinhar.disabled == false)
          var caixa_texto = document.getElementById('NMPalpite');
          var div_mensagem = document.getElementById('DIVMensagem');
-
          var chuteDoJogador = parseInt(caixa_texto.value);
 
          if(isNaN(chuteDoJogador)){
