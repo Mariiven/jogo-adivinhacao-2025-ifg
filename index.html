@@ -121,9 +121,15 @@
          
          if(chuteDoJogador == numeroSecreto){
             div_mensagem.textContent = "Você acertou!";
-         }else{
-            div_mensagem.textContent = "Você errou!";
-         }
+         }else if(qtdTentativas > 0){
+          if(chuteDoJogador > numeroSecreto){
+            div_mensagem.textContent = "Errado! O número secreto é menor. Você tem "+qtdTentativas+" tentativas sobrando."
+          }else{
+            div_mensagem.textContent = "Errado! O número secreto é maior. Você tem "+qtdTentativas+" tentativas sobrando."
+          }
+        }else{
+              div_mensagem.textContent = "Fim de jogo! O número secreto era "+numeroSecreto;
+        }
 
          if(qtdTentativas == 0){
           desabilitarJogo();
@@ -133,6 +139,5 @@
       }
 
     </script>
-    
   </body>
 </html>
