@@ -76,10 +76,12 @@
       function desabilitarJogo(){
         var botao_adivinhar = document.getElementById('BTNAdivinhar');
         botao_adivinhar.disabled = true;
+        botao_adivinhar.style.backgroundColor = '#DCDCDC'
       }
 
       function voltarCorOriginalBotao(){
         var botao_adivinhar = document.getElementById('BTNAdivinhar');
+        if( botao_adivinhar.disabled == false)
         botao_adivinhar.style.backgroundColor = '#28a745';
       }
 
